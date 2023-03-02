@@ -5,7 +5,8 @@
     text-align: center;
     border: 5px solid rgb(52, 141, 169);
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 100px;
+    margin: 50px auto 0;
 }
 
 .display {
@@ -17,9 +18,19 @@
     margin-bottom: 25px;
 }
 
+.isEvenDisplay {
+    font-size: 40px;
+    font-weight: 700;
+    border: 5px solid rgb(91, 196, 227);
+    border-radius: 10px;
+    padding: 50px;
+    margin-bottom: 25px;
+}
+
 .controlButtons {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    gap: 20px;
 }
 
 .controlButton {

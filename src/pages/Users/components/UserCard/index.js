@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import styles from './styles.module.scss';
 
 export const UserCard = ({id, image, name, age}) => {
@@ -9,4 +11,11 @@ export const UserCard = ({id, image, name, age}) => {
             <h2 className={styles.age}>Age: {age}</h2>
         </div>
     );
+};
+
+UserCard.propTypes = {
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
 };

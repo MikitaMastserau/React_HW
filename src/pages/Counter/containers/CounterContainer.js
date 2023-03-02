@@ -1,12 +1,13 @@
 import { Component } from "react";
-import { CounterView } from "../components/CounterView";
+
+import { CounterLayout } from "../components/CounterLayout";
 
 export class CounterContainer extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-          countValue: 0,  
+          countValue: 0,
         };
     };
 
@@ -25,11 +26,12 @@ export class CounterContainer extends Component {
     };
 
     render() {
-        return (<CounterView
-            counterValue={this.state.countValue}
-            handleDecrement={this.handleDecrement}
-            handleReset={this.handleReset}
-            handleIncrement={this.handleIncrement}
-        />);
+        return (
+            <CounterLayout
+                counterValue={this.state.countValue}
+                handleDecrement={this.handleDecrement}
+                handleReset={this.handleReset}
+                handleIncrement={this.handleIncrement} />
+        );
     };
 };

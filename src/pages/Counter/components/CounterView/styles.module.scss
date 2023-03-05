@@ -1,65 +1,65 @@
 .wrapper {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    border: 5px solid rgb(52, 141, 169);
-    border-radius: 10px;
-    padding: 20px 100px;
-    margin: 50px auto 0;
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	border: 5px solid rgb(52, 141, 169);
+	border-radius: 10px;
+	padding: 20px 100px;
+	margin: 50px auto 0;
 }
 
 .display {
-    font-size: 40px;
-    font-weight: 700;
-    border: 5px solid rgb(91, 196, 227);
-    border-radius: 10px;
-    padding: 50px;
-    margin-bottom: 25px;
+	font-size: 40px;
+	font-weight: 700;
+	border: 5px solid rgb(91, 196, 227);
+	border-radius: 10px;
+	padding: 50px;
+	margin-bottom: 25px;
 }
 
 .isEvenDisplay {
-    font-size: 40px;
-    font-weight: 700;
-    border: 5px solid rgb(91, 196, 227);
-    border-radius: 10px;
-    padding: 50px;
-    margin-bottom: 25px;
+	font-size: 40px;
+	font-weight: 700;
+	border: 5px solid rgb(91, 196, 227);
+	border-radius: 10px;
+	padding: 50px;
+	margin-bottom: 25px;
 }
 
 .controlButtons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
 }
 
 .controlButton {
-    display: flex;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-    font-size: 20px;
-    border: 5px solid rgb(91, 196, 227);
-    border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	width: 70px;
+	height: 70px;
+	font-size: 20px;
+	border: 5px solid rgb(91, 196, 227);
+	border-radius: 50%;
 
-    &:first-of-type {
-        font-size: 40px;
-    }
+	&:first-of-type {
+		font-size: 40px;
+	}
 
-    &:nth-of-type(2) {
-        align-items: center;
-    }
+	&:nth-of-type(2) {
+		align-items: center;
+	}
 
-    &:last-of-type {
-        font-size: 40px;
-    }
+	&:last-of-type {
+		font-size: 40px;
+	}
 
-    &:hover {
-        border: 5px solid rgb(34, 178, 222);
-        background-color: rgb(213, 243, 255);
-    }
+	&:hover {
+		border: 5px solid rgb(34, 178, 222);
+		background-color: rgb(213, 243, 255);
+	}
 
-    &:active {
-        background-color: rgb(34, 178, 222);
-    }
+	&:active {
+		background-color: rgb(34, 178, 222);
+	}
 }

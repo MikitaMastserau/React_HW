@@ -12,7 +12,6 @@ export class CondRenderContainer extends Component {
 	};
 
 	render() {
-		console.log(this.state.isActive);
 		return (
 			<CondRenderLayout handleClick={this.handleActiveToggle} isActive={this.state.isActive} />
 		);

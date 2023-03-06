@@ -8,26 +8,14 @@ export class CounterContainer extends Component {
 
 		this.state = {
 			countValue: 0,
+			isEven: true,
 		};
-
-		console.log("constructor");
 	};
 
-	componentDidMount() {
-		console.log("Did Mount");
-	};
-
-	shouldComponentUpdate(nextProps, nextState, nextContext) {
-		console.log("Should Update, true");
-		return true;
-	};
-
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		console.log("Did Update");
-	};
-
-	componentWillUnmount() {
-		console.log("Unmounted");
+	componentDidUpdate(_, prevState) {
+		if (prevState.countValue !== this.state.countValue) {
+			this.setState({ isEven: this.state.countValue % 2 === 0 });
+		};
 	};
 
 	handleDecrement = () => {
@@ -45,10 +33,10 @@ export class CounterContainer extends Component {
 	};
 
 	render() {
-		console.log("Render");
 		return (
 			<CounterLayout
 				counterValue={this.state.countValue}
+				isEven={this.state.isEven}
 				handleDecrement={this.handleDecrement}
 				handleReset={this.handleReset}
 				handleIncrement={this.handleIncrement}

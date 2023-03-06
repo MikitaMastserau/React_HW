@@ -1,13 +1,13 @@
-import { CounterView } from "../CounterView";
+import { Title } from "../../../../components/Title";
+import CounterView from "../CounterView";
 
-import headingStyles from "../../../../components/HeadingStyles/styles.module.scss";
-
-export const CounterLayout = ({ counterValue, handleDecrement, handleReset, handleIncrement }) => {
+export const CounterLayout = ({ counterValue, isEven, handleDecrement, handleReset, handleIncrement }) => {
 	return (
 		<div>
-			<h1 className={headingStyles.heading}>Counter (class component)</h1>
+			<Title title="Counter (Class Component)" />
 			<CounterView
 				counterValue={counterValue}
+				isEven={isEven}
 				handleDecrement={handleDecrement}
 				handleReset={handleReset}
 				handleIncrement={handleIncrement} />

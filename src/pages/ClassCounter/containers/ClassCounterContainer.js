@@ -1,20 +1,13 @@
 import { Component } from "react";
 
-import { CounterLayout } from "../components/CounterLayout";
+import { ClassCounterLayout } from "../components/ClassCounterLayout";
 
-export class CounterContainer extends Component {
+export class ClassCounterContainer extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			countValue: 0,
-			isEven: true,
-		};
-	};
-
-	componentDidUpdate(_, prevState) {
-		if (prevState.countValue !== this.state.countValue) {
-			this.setState({ isEven: this.state.countValue % 2 === 0 });
 		};
 	};
 
@@ -34,9 +27,8 @@ export class CounterContainer extends Component {
 
 	render() {
 		return (
-			<CounterLayout
+			<ClassCounterLayout
 				counterValue={this.state.countValue}
-				isEven={this.state.isEven}
 				handleDecrement={this.handleDecrement}
 				handleReset={this.handleReset}
 				handleIncrement={this.handleIncrement}

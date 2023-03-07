@@ -3,7 +3,8 @@ import { memo } from "react";
 
 import styles from "./styles.module.scss";
 
-const CounterView = ({ counterValue, isEven, handleDecrement, handleReset, handleIncrement }) => {
+const CounterView = ({ counterValue, handleDecrement, handleReset, handleIncrement }) => {
+	const isEven = counterValue % 2 === 0;
 	return (
 		<div className={styles.wrapper}>
 			<div className={`${styles.display} ${isEven ? styles.evenColor : styles.oddColor}`}>
@@ -23,7 +24,6 @@ const CounterView = ({ counterValue, isEven, handleDecrement, handleReset, handl
 
 CounterView.propTypes = {
 	counterValue: PropTypes.number.isRequired,
-	isEven: PropTypes.bool.isRequired,
 	handleDecrement: PropTypes.func.isRequired,
 	handleReset: PropTypes.func.isRequired,
 	handleIncrement: PropTypes.func.isRequired,

@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.86cb6772.css",
-    "main.js": "/static/js/main.fe94fc39.js",
-    "static/media/kolya.jpg": "/static/media/kolya.6c1a5e278b23e6aeac0f.jpg",
-    "static/media/anna.jpg": "/static/media/anna.5d2fcfef70943d68fe80.jpg",
-    "static/media/valera.jpg": "/static/media/valera.9bc6419e1a2579f2d5eb.jpg",
-    "static/media/oleg.jpg": "/static/media/oleg.14b96f9aa0a4c4d1fd0b.jpg",
-    "index.html": "/index.html",
-    "main.86cb6772.css.map": "/static/css/main.86cb6772.css.map",
-    "main.fe94fc39.js.map": "/static/js/main.fe94fc39.js.map"
+    "main.css": "/React_HW/static/css/main.86cb6772.css",
+    "main.js": "/React_HW/static/js/main.1508d1e9.js",
+    "static/media/kolya.jpg": "/React_HW/static/media/kolya.6c1a5e278b23e6aeac0f.jpg",
+    "static/media/anna.jpg": "/React_HW/static/media/anna.5d2fcfef70943d68fe80.jpg",
+    "static/media/valera.jpg": "/React_HW/static/media/valera.9bc6419e1a2579f2d5eb.jpg",
+    "static/media/oleg.jpg": "/React_HW/static/media/oleg.14b96f9aa0a4c4d1fd0b.jpg",
+    "index.html": "/React_HW/index.html",
+    "main.86cb6772.css.map": "/React_HW/static/css/main.86cb6772.css.map",
+    "main.1508d1e9.js.map": "/React_HW/static/js/main.1508d1e9.js.map"
   },
   "entrypoints": [
     "static/css/main.86cb6772.css",
-    "static/js/main.fe94fc39.js"
+    "static/js/main.1508d1e9.js"
   ]
 }

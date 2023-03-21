@@ -8,6 +8,7 @@ import { ClassCounterContainer } from "../pages/ClassCounter/containers/ClassCou
 import { FuncCounterContainer } from "../pages/FuncCounter/containers/FuncCounterContainer";
 import { CondRenderContainer } from "../pages/CondRender/containers/CondRenderContainer";
 import { CountersListContainer } from "../pages/CountersList/containers/CountersListContainer";
+import { FormContainer } from "../pages/Form/containers/FormContainer";
 
 export const Router = () => {
 	return (
@@ -18,6 +19,7 @@ export const Router = () => {
 			<Route path={ROUTE_NAMES.FUNC_COUNTER} element={<FuncCounterContainer />} />
 			<Route path={ROUTE_NAMES.COND_RENDER} element={<CondRenderContainer />} />
 			<Route path={ROUTE_NAMES.COUNTERS_LIST} element={<CountersListContainer />} />
+			<Route path={ROUTE_NAMES.FORM} element={<FormContainer />} />
 			<Route path="*" element={<Title title="ERROR 404. NOT FOUND" />} />
 		</Routes>
 	);

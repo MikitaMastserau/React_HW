@@ -5,4 +5,5 @@ export const ROUTE_NAMES = {
 	FUNC_COUNTER: "/functional-counter",
 	COND_RENDER: "/conditional-rendering",
 	COUNTERS_LIST: "/counters-list",
+	FORM: "/form",
 };

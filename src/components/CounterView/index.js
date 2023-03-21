@@ -3,7 +3,14 @@ import { memo } from "react";
 
 import styles from "./styles.module.scss";
 
-const CounterView = ({ counterValue, handleDecrement, handleReset, handleIncrement }) => {
+const CounterView = ({
+	id,
+	counterValue,
+	handleDecrement,
+	handleReset,
+	handleIncrement,
+	handleRemove
+}) => {
 	const isEven = counterValue % 2 === 0;
 	return (
 		<div className={styles.wrapper}>
@@ -14,19 +21,22 @@ const CounterView = ({ counterValue, handleDecrement, handleReset, handleIncreme
 				{isEven ? "even" : "odd"}
 			</div>
 			<div className={styles.controlButtons}>
-				<button className={styles.controlButton} onClick={handleDecrement}>-</button>
-				<button className={styles.controlButton} onClick={handleReset}>Reset</button>
-				<button className={styles.controlButton} onClick={handleIncrement}>+</button>
+				<button className={styles.controlButton} onClick={() => handleDecrement(id)}>-</button>
+				<button className={styles.controlButton} onClick={() => handleReset(id)}>Reset</button>
+				<button className={styles.controlButton} onClick={() => handleIncrement(id)}>+</button>
 			</div>
+			{handleRemove && <button className={styles.removeButton} onClick={() => handleRemove(id)}>Remove</button>}
 		</div>
 	);
 };
 
 CounterView.propTypes = {
+	id: PropTypes.string,
 	counterValue: PropTypes.number.isRequired,
 	handleDecrement: PropTypes.func.isRequired,
 	handleReset: PropTypes.func.isRequired,
 	handleIncrement: PropTypes.func.isRequired,
+	handleRemove: PropTypes.func,
 };
 
 export default memo(CounterView);

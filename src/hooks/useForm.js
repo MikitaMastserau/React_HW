@@ -14,7 +14,7 @@ const useForm = (initFormFields) => {
 
    const handleReset = useCallback(() => {
       setForm(initFormFields);
-   }, []);
+   }, [initFormFields]);
 
    return {
       form,

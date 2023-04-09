@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import * as actions from "../actions";
 
 const initialState = {
-   counters: [],
+   counters: {},
 };
 
 export const countersListReducer = handleActions({
@@ -16,7 +16,7 @@ export const countersListReducer = handleActions({
 
       const stateCopy = structuredClone(state);
 
-      stateCopy.counters.push(newCounter);
+      stateCopy.counters[newCounter.id] = newCounter;
 
       return stateCopy;
    },
@@ -26,37 +26,32 @@ export const countersListReducer = handleActions({
    [actions.removeCounter]: (state, { payload: counterId }) => {
       const stateCopy = structuredClone(state);
 
-      const counterIndexToRemove = stateCopy.counters.findIndex(({ id }) => id === counterId);
+      const entries = Object.entries(stateCopy.counters);
+      const counterIndexToRemove = entries.findIndex(({ id }) => id === counterId);
+      entries.splice(counterIndexToRemove, 1);
 
-      stateCopy.counters.splice(counterIndexToRemove, 1);
+      stateCopy.counters = Object.fromEntries(entries);
 
       return stateCopy;
    },
    [actions.decrementCounter]: (state, { payload: counterId }) => {
       const stateCopy = structuredClone(state);
-      const foundCounter = stateCopy.counters.find(({ id }) => id === counterId);
 
-      if (foundCounter.counterValue > 0) {
-         foundCounter.counterValue -= 1;
-      };
+      stateCopy.counters[counterId].counterValue -= 1;
 
       return stateCopy;
    },
    [actions.resetCounter]: (state, { payload: counterId }) => {
       const stateCopy = structuredClone(state);
 
-      const foundCounter = stateCopy.counters.find(({ id }) => id === counterId);
-
-      foundCounter.counterValue = 0;
+      stateCopy.counters[counterId].counterValue = 0;
 
       return stateCopy;
    },
    [actions.incrementCounter]: (state, { payload: counterId }) => {
       const stateCopy = structuredClone(state);
 
-      const foundCounter = stateCopy.counters.find(({ id }) => id === counterId);
-
-      foundCounter.counterValue += 1;
+      stateCopy.counters[counterId].counterValue += 1;
 
       return stateCopy;
    },

@@ -1,0 +1,1 @@
+export const countersSelector = (store) => store.reduxCountersList.counters;

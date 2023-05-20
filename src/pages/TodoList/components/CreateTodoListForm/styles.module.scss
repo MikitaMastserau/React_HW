@@ -1,0 +1,39 @@
+.form {
+   width: 400px;
+   display: flex;
+   color: #fff;
+   background-color: lightgrey;
+   border-radius: 10px;
+   gap: 10px;
+   padding: 20px;
+   margin: 0 auto;
+}
+
+.textInput {
+   border: 2px solid darkgrey;
+   border-radius: 5px;
+   padding: 5px 10px;
+
+   &:focus {
+      border: 2px solid dimgray;
+   }
+}
+
+.submitButton {
+   border: 2px solid dimgray;
+   border-radius: 5px;
+   color: #000;
+   background-color: #fff;
+   padding: 5px;
+
+   &:hover {
+      color: #fff;
+      background-color: darkgrey;
+   }
+
+   &:active {
+      color: #fff;
+      background-color: rgb(0, 209, 112);
+      border: 2px solid rgb(0, 209, 112);
+   }
+}

@@ -2,7 +2,7 @@ import { Title } from "components/Title";
 
 import styles from "./styles.module.scss";
 
-export const DataFetchingLayout = ({ pokemons, errors, isLoading }) => {
+export const DataFetchingLayout = ({ data, errors, isLoading }) => {
 
    return (
       <>
@@ -11,7 +11,7 @@ export const DataFetchingLayout = ({ pokemons, errors, isLoading }) => {
          {isLoading ? <p className={styles.loading}>Loading ...</p> :
 
             <div className={styles.wrapper}>
-               {pokemons.map(({ name, url }) => {
+               {data?.results?.map(({ name, url }) => {
                   return (
                      <div className={styles.pokemonInfo} key={name}>
                         <p>{name} </p>

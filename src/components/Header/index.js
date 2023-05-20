@@ -15,6 +15,8 @@ export const Header = () => {
 			<Link className={styles.navLink} to={ROUTE_NAMES.COUNTERS_LIST}>Counters List</Link>
 			<Link className={styles.navLink} to={ROUTE_NAMES.REDUX_COUNTERS_LIST}>Redux Counters List</Link>
 			<Link className={styles.navLink} to={ROUTE_NAMES.FORM}>Form</Link>
+			<Link className={styles.navLink} to={ROUTE_NAMES.TODO_LIST}>Todo List</Link>
+			<Link className={styles.navLink} to={ROUTE_NAMES.DATA_FETCHING}>Data Fetching</Link>
 			<Link className={styles.navLink} to={ROUTE_NAMES.POKEMONS}>Pokemons</Link>
 		</div>
 	);

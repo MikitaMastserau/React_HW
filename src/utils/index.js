@@ -1,1 +1,2 @@
-export { default as isEven } from "./isEven";
+export { isEven } from "./isEven";
+export { delay } from "./delay";

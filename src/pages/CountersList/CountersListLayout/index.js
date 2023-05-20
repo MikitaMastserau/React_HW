@@ -57,6 +57,5 @@ CountersListLayout.propTypes = {
    handleIncrement: PropTypes.func.isRequired,
    handleRemove: PropTypes.func.isRequired,
    totalSum: PropTypes.number.isRequired,
-   countersAmount: PropTypes.number.isRequired,
    averageValue: PropTypes.number.isRequired,
 };

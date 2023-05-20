@@ -1,27 +1,45 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-import { getPokemonsThunk } from "../api";
-import { Title } from "components/Title";
+import { DataFetchingLayout } from "../components/DataFetchingLayout";
+
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon"
 
 export const DataFetchingContainer = () => {
-   // const dispatch = useDispatch();
 
-   // const pokemons = useSelector((state) => state.dataFetching.data);
+   const [pokemons, setPokemons] = useState([]);
+   const [errors, setErrors] = useState(null);
+   const [isLoading, setLoading] = useState(false);
 
-   // const handlePokemonsLoad = () => {
-   //    dispatch(getPokemonsThunk);
-   // };
+   useEffect(() => {
+      setLoading(true);
+      fetch(BASE_URL).then((response) => response.json()).then((data) => {
+         setPokemons(data.results);
+      }).catch((errors) => {
+         setErrors(errors.message);
+      }).finally(() => {
+         setLoading(false);
+      });
+   }, []);
+
+   // #2 var
+
+   useEffect(() => {
+      (async () => {
+         setLoading(true);
+         try {
+            const data = await fetch(BASE_URL).then((response) => response.json());
+            setPokemons(data.results);
+         } catch (errors) {
+            setErrors(errors.message);
+         } finally {
+            setLoading(false);
+         };
+      })();
+   }, []);
 
    return (
       <>
-         <Title title="Pokemons" />
-         {/* <div>
-            <button onClick={handlePokemonsLoad}>Get All Pokemons</button>
-
-            <div>
-
-            </div>
-         </div> */}
+         <DataFetchingLayout pokemons={pokemons} errors={errors} isLoading={isLoading} />
       </>
    );
 };

@@ -1,18 +1,9 @@
-// import { configureStore } from "@reduxjs/toolkit";
-import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore } from "@reduxjs/toolkit";
 
-//import dataFetchingReducer from "./dataFetchingReducer";
-import { rootReducer } from "./rootReducer";
+import reduxCountersListSlice from "pages/ReduxCountersList/reducers";
 
-export const configureStore = () => {
-   const store = createStore(rootReducer(), composeWithDevTools());
-
-   return store;
-};
-
-// export const store = configureStore({
-//    reducer: {
-//       dataFetching: dataFetchingReducer,
-//    },
-// })
+export const store = configureStore({
+   reducer: {
+      reduxCountersList: reduxCountersListSlice,
+   },
+})

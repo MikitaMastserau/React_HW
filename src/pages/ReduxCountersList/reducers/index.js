@@ -1,58 +1,50 @@
-import { handleActions } from "redux-actions";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 
-import * as actions from "../actions";
-
 const initialState = {
-   counters: {},
+   countersList: [],
 };
 
-export const countersListReducer = handleActions({
-   [actions.addCounter]: (state) => {
-      const newCounter = {
-         id: uuid(),
-         counterValue: 0,
-      };
+const reduxCountersListSlice = createSlice({
+   name: "reduxCountersList",
+   initialState,
+   reducers: {
+      addCounter: (state) => {
+         const newCounter = {
+            id: uuid(),
+            counterValue: 0,
+         };
 
-      const stateCopy = structuredClone(state);
+         state.countersList.push(newCounter);
+      },
+      resetAllCounters: (state) => {
+         state.countersList = [];
+      },
+      decrementCounter: (state, { payload: counterId }) => {
+         const foundCounter = state.countersList.find((counter) => counter.id === counterId);
 
-      stateCopy.counters[newCounter.id] = newCounter;
+         if (foundCounter.counterValue > 0) {
+            foundCounter.counterValue -= 1;
+         }
+      },
+      resetCounter: (state, { payload: counterId }) => {
+         const foundCounter = state.countersList.find((counter) => counter.id === counterId);
 
-      return stateCopy;
+         foundCounter.counterValue = 0;
+      },
+      incrementCounter: (state, { payload: counterId }) => {
+         const foundCounter = state.countersList.find((counter) => counter.id === counterId);
+
+         foundCounter.counterValue += 1;
+      },
+      removeCounter: (state, { payload: counterId }) => {
+         const foundCounterIndex = state.countersList.findIndex(({ id }) => id === counterId);
+
+         state.countersList.splice(foundCounterIndex, 1);
+      },
    },
-   [actions.resetAllCounters]: (state) => {
-      return initialState;
-   },
-   [actions.removeCounter]: (state, { payload: counterId }) => {
-      const stateCopy = structuredClone(state);
+});
 
-      const entries = Object.entries(stateCopy.counters);
-      const counterIndexToRemove = entries.findIndex(({ id }) => id === counterId);
-      entries.splice(counterIndexToRemove, 1);
+export const { addCounter, resetAllCounters, decrementCounter, resetCounter, incrementCounter, removeCounter } = reduxCountersListSlice.actions;
 
-      stateCopy.counters = Object.fromEntries(entries);
-
-      return stateCopy;
-   },
-   [actions.decrementCounter]: (state, { payload: counterId }) => {
-      const stateCopy = structuredClone(state);
-
-      stateCopy.counters[counterId].counterValue -= 1;
-
-      return stateCopy;
-   },
-   [actions.resetCounter]: (state, { payload: counterId }) => {
-      const stateCopy = structuredClone(state);
-
-      stateCopy.counters[counterId].counterValue = 0;
-
-      return stateCopy;
-   },
-   [actions.incrementCounter]: (state, { payload: counterId }) => {
-      const stateCopy = structuredClone(state);
-
-      stateCopy.counters[counterId].counterValue += 1;
-
-      return stateCopy;
-   },
-}, initialState);
+export default reduxCountersListSlice.reducer;

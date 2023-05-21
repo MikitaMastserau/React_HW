@@ -24,7 +24,7 @@ export const Router = () => {
 			<Route path={ROUTE_NAMES.COUNTERS_LIST} element={<CountersListContainer />} />
 			<Route path={ROUTE_NAMES.REDUX_COUNTERS_LIST} element={<ReduxCountersListContainer />} />
 			<Route path={ROUTE_NAMES.FORM} element={<FormContainer />} />
-			<Route path={ROUTE_NAMES.TODO_LIST} element={<TodoListContainer />} />
+			{/* <Route path={ROUTE_NAMES.TODO_LIST} element={<TodoListContainer />} /> */}
 			<Route path={ROUTE_NAMES.DATA_FETCHING} element={<DataFetchingContainer />} />
 			<Route path={ROUTE_NAMES.POKEMONS} element={<DataFetchingContainer />} />
 			<Route path="*" element={<Title title="ERROR 404. NOT FOUND" />} />

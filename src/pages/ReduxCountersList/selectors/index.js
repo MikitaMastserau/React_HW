@@ -1,23 +1,25 @@
-import { createSelector } from "reselect";
+import { createSelector } from "@reduxjs/toolkit";
 
-export const countersSelector = (store) => store.reduxCountersList.counters;
+const countersSelector = (store) => store.reduxCountersList;
 
-export const countersAmountSelector = createSelector(
-   countersSelector,
-   (counters) => Object.keys(counters).length
-);
+export const countersListSelector = createSelector(countersSelector, (reduxCountersList) => reduxCountersList.countersList);
 
-export const totalSumSelector = createSelector(
-   countersSelector,
-   (counters) => {
-      const countersValues = Object.values(counters);
+// export const countersAmountSelector = createSelector(
+//    countersSelector,
+//    (counters) => Object.keys(counters).length
+// );
 
-      return countersValues.reduce((result, { counterValue }) => result + counterValue, 0);
-   }
-);
+// export const totalSumSelector = createSelector(
+//    countersSelector,
+//    (counters) => {
+//       const countersValues = Object.values(counters);
 
-export const averageValueSelector = createSelector(
-   totalSumSelector,
-   countersAmountSelector,
-   (totalSum, countersAmount) => countersAmount > 0 ? (Math.round((totalSum / countersAmount) * 10) / 10) : 0
-);
+//       return countersValues.reduce((result, { counterValue }) => result + counterValue, 0);
+//    }
+// );
+
+// export const averageValueSelector = createSelector(
+//    totalSumSelector,
+//    countersAmountSelector,
+//    (totalSum, countersAmount) => countersAmount > 0 ? (Math.round((totalSum / countersAmount) * 10) / 10) : 0
+// );

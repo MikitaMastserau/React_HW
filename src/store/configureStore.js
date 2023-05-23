@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import reduxCountersListSlice from "pages/ReduxCountersList/reducers";
+import reduxCountersListReducer from "pages/ReduxCountersList/reducers";
+import todoListReducer from "pages/TodoList/reducers";
 
 export const store = configureStore({
    reducer: {
-      reduxCountersList: reduxCountersListSlice,
+      reduxCountersList: reduxCountersListReducer,
+      todoList: todoListReducer,
    },
+   middleware: [],
 })

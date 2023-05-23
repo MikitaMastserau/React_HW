@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-export const todosSelector = (state) => state.todoListPage.todos;
+export const todosSelector = (state) => state.todoList.todos;
 
 export const sortTasksSelector = createSelector(todosSelector, (todos) => {
    const copy = structuredClone(todos);

@@ -4,7 +4,7 @@ import { useForm } from "hooks";
 
 import { TodoListLayout } from "../components/TodoListLayout";
 
-import { cancelTodo, completeTodo, createTodo, deleteTodo, editTodo, saveTodo } from "../actions";
+import { cancelTodo, completeTodo, createTodo, deleteTodo, editTodo, saveTodo } from "../reducers";
 import { sortTasksSelector } from "../selectors";
 
 export const TodoListContainer = () => {
@@ -17,7 +17,9 @@ export const TodoListContainer = () => {
    const handleSubmit = (event) => {
       event.preventDefault();
 
-      dispatch(createTodo(form));
+      if (form.taskText !== "") {
+         dispatch(createTodo(form));
+      }
 
       handleReset();
    };

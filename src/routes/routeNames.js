@@ -9,7 +9,7 @@ export const ROUTE_NAMES = {
 	FORM: "/form",
 	TODO_LIST: "/todo-list",
 	RENDER_PROPS: "/render-props",
+	DATA_FETCHING: "/data-fetching",
 	POKEMONS: "/pokemons",
 	POKEMONS_INFO: "/pokemons/:pokemonName",
-	DATA_FETCHING: "/data-fetching",
 };

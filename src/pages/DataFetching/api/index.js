@@ -1,1 +1,1 @@
-export const getPokemons = (url) => fetch(url).then((response) => response.json());
+export const getPokemonsList = (url) => fetch(url).then((response) => response.json());

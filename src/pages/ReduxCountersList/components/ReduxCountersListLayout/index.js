@@ -24,11 +24,11 @@ export const ReduxCountersListLayout = ({
          <div className={styles.controlButtons}>
             <button className={styles.controlButton} onClick={handleAddCounter}>Add Counter</button>
             <button className={styles.controlButton} onClick={handleResetAllCounters}>Reset</button>
-            <div className={styles.stats}>
-               {/* <p>Counters Amount: <span>{countersAmount}</span></p>
+            {/* <div className={styles.stats}>
+               <p>Counters Amount: <span>{countersAmount}</span></p>
                <p>Total Sum: <span>{totalSum}</span></p>
-               <p>Average: <span>{averageValue}</span></p> */}
-            </div>
+               <p>Average: <span>{averageValue}</span></p>
+            </div> */}
          </div>
 
          <div className={styles.counters}>
@@ -47,18 +47,18 @@ export const ReduxCountersListLayout = ({
    );
 };
 
-// ReduxCountersListLayout.propTypes = {
-//    counters: PropTypes.objectOf(PropTypes.shape({
-//       id: PropTypes.string,
-//       countValue: PropTypes.number,
-//    }).isRequired).isRequired,
-//    handleAddCounter: PropTypes.func.isRequired,
-//    handleResetAllCounters: PropTypes.func.isRequired,
-//    handleDecrementCounter: PropTypes.func.isRequired,
-//    handleResetCounter: PropTypes.func.isRequired,
-//    handleIncrementCounter: PropTypes.func.isRequired,
-//    handleRemoveCounter: PropTypes.func.isRequired,
-//    totalSum: PropTypes.number.isRequired,
-//    countersAmount: PropTypes.number.isRequired,
-//    averageValue: PropTypes.number.isRequired,
-// };
+ReduxCountersListLayout.propTypes = {
+   counters: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      countValue: PropTypes.number,
+   }).isRequired).isRequired,
+   handleAddCounter: PropTypes.func.isRequired,
+   handleResetAllCounters: PropTypes.func.isRequired,
+   handleDecrementCounter: PropTypes.func.isRequired,
+   handleResetCounter: PropTypes.func.isRequired,
+   handleIncrementCounter: PropTypes.func.isRequired,
+   handleRemoveCounter: PropTypes.func.isRequired,
+   // totalSum: PropTypes.number.isRequired,
+   // countersAmount: PropTypes.number.isRequired,
+   // averageValue: PropTypes.number.isRequired,
+};

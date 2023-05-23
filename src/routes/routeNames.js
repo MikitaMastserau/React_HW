@@ -8,6 +8,7 @@ export const ROUTE_NAMES = {
 	REDUX_COUNTERS_LIST: "/redux-counters-list",
 	FORM: "/form",
 	TODO_LIST: "/todo-list",
+	RENDER_PROPS: "/render-props",
 	POKEMONS: "/pokemons",
 	POKEMONS_INFO: "/pokemons/:pokemonName",
 	DATA_FETCHING: "/data-fetching",

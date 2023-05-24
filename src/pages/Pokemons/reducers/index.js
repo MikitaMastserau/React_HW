@@ -1,6 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import * as actions from "../actions";
+import { getPokemonsThunk } from "../api";
 
 const initialState = {
    data: [],
@@ -8,24 +8,24 @@ const initialState = {
    errors: null,
 };
 
-export const pokemonsReducer = createReducer(initialState, (builder) => {
-   builder.addCase(actions.getPokemonsRequest, (state, action) => {
-      state.isLoading = true;
-
-      return state;
-   });
-   builder.addCase(actions.getPokemonsSuccess, (state, { payload }) => {
-      state.data = payload;
-
-      state.isLoading = false;
-
-      return state;
-   });
-   builder.addCase(actions.getPokemonsFail, (state, { payload }) => {
-      state.errors = payload;
-
-      state.isLoading = false;
-
-      return state;
-   });
+const pokemonsSlice = createSlice({
+   name: "pokemons",
+   initialState,
+   reducers: {},
+   extraReducers: (builder) => {
+      builder
+         .addCase(getPokemonsThunk.pending, (state) => {
+            state.isLoading = true;
+         })
+         .addCase(getPokemonsThunk.fulfilled, (state, { payload }) => {
+            state.isLoading = false;
+            state.data = payload;
+         })
+         .addCase(getPokemonsThunk.rejected, (state, { error }) => {
+            state.isLoading = false;
+            state.errors = error;
+         })
+   },
 });
+
+export default pokemonsSlice.reducer;

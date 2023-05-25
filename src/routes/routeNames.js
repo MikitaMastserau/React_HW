@@ -11,5 +11,5 @@ export const ROUTE_NAMES = {
 	RENDER_PROPS: "/render-props",
 	DATA_FETCHING: "/data-fetching",
 	POKEMONS: "/pokemons",
-	POKEMONS_INFO: "/pokemons/:pokemonName",
+	POKEMON_INFO: "/pokemons/:pokemonName",
 };

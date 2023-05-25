@@ -14,6 +14,7 @@ import { ReduxCountersListContainer } from "pages/ReduxCountersList/containers/R
 import { TodoListContainer } from "pages/TodoList/containers/TodoListContainer";
 import { RenderPropsContainer } from "pages/RenderProps/containers/RenderPropsContainer";
 import { PokemonsContainer } from "pages/Pokemons/containers/PokemonsContainer";
+import { PokemonInfoContainer } from "pages/PokemonInfo/containers/PokemonInfoContainer";
 
 export const Router = () => {
 	return (
@@ -30,6 +31,7 @@ export const Router = () => {
 			<Route path={ROUTE_NAMES.RENDER_PROPS} element={<RenderPropsContainer />} />
 			<Route path={ROUTE_NAMES.DATA_FETCHING} element={<DataFetchingContainer />} />
 			<Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
+			<Route path={ROUTE_NAMES.POKEMON_INFO} element={<PokemonInfoContainer />} />
 			<Route path="*" element={<Title title="ERROR 404. NOT FOUND" />} />
 		</Routes>
 	);

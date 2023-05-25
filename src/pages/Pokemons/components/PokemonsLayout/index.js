@@ -1,32 +1,40 @@
+import { Link } from "react-router-dom";
+
 import { Title } from "components/Title";
+import { LoadingSpinner } from "components/LoadingSpinner";
+import { ROUTE_NAMES } from "routes/routeNames";
 
 import styles from "./styles.module.scss";
 
-export const PokemonsLayout = ({ data, errors, isLoading, handlePokemonsLoad }) => {
+export const PokemonsLayout = ({ pokemonsData, isLoading, errors, handlePokemonsLoad }) => {
 
    return (
       <>
          <Title title="Pokemons" />
 
-         <div className={styles.wrapper}>
+         <div className={styles.buttonWrapper}>
             <button className={styles.loadButton} onClick={handlePokemonsLoad}>Load Pokemons</button>
          </div>
 
-         {/* {isLoading ? <p className={styles.loading}>Loading ...</p> :
+         {isLoading ? <LoadingSpinner /> :
 
             <div className={styles.wrapper}>
-               {data?.results?.map(({ name, url }) => {
+               {pokemonsData?.map(({ name, id, pokemonIcon }) => {
                   return (
-                     <div className={styles.pokemonInfo} key={name}>
-                        <p>{name}</p>
-                        <a href={url} target="_blank" rel="noreferrer">{url}</a>
+                     <div key={id} className={styles.pokemonItem}>
+                        <Link to={`${ROUTE_NAMES.POKEMONS}/${name}`} >
+                           <div className={styles.pokemonLink}>
+                              <img src={pokemonIcon} />
+                              <p>{name}</p>
+                           </div>
+                        </Link>
                      </div>
-                  )
+                  );
                })}
             </div>
          }
 
-         {errors && <p className={styles.errors}>{errors}</p>} */}
+         {errors && <p className={styles.errors}>{errors}</p>}
       </>
    );
 };

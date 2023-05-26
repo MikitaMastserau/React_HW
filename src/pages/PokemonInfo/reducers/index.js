@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { getPokemonInfoThunk } from "../api";
+import { createStatsList } from "../utils/createStatsList";
+import { createAbilitiesList } from "../utils/createAbilitiesList";
 
 const initialState = {
-   data: {},
+   name: "",
+   stats: {},
+   abilities: [],
+   sprites: {},
    isLoading: false,
    errors: null,
 };
@@ -18,8 +23,14 @@ const pokemonInfoSlice = createSlice({
             state.isLoading = true;
          })
          .addCase(getPokemonInfoThunk.fulfilled, (state, { payload }) => {
+            const { name, stats, abilities, sprites } = payload;
+
             state.isLoading = false;
-            state.data = payload;
+            state.name = name;
+            state.stats = createStatsList(stats);
+            state.abilities = createAbilitiesList(abilities);
+            state.sprites = sprites;
+
          })
          .addCase(getPokemonInfoThunk.rejected, (state, { error }) => {
             state.isLoading = false;

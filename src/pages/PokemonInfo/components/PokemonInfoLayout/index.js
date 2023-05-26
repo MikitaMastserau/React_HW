@@ -1,10 +1,14 @@
 import { Title } from "components/Title";
 import { SubTitle } from "components/SubTitle";
 import { LoadingSpinner } from "components/LoadingSpinner";
+import { StatsList } from "../StatsList";
+import { AbilitiesList } from "../AbilitiesList";
+
+import { ABILITIES_ICON_LIST, ABILITIES_LIST_MAIN_ICON, STAT_ICON_LIST } from "pages/PokemonInfo/config/statsConfig";
 
 import styles from "./styles.module.scss";
 
-export const PokemonInfoLayout = ({ name, sprites, isLoading, errors }) => {
+export const PokemonInfoLayout = ({ name, stats, abilities, sprites, isLoading, errors }) => {
 
    return (
       <>
@@ -15,7 +19,25 @@ export const PokemonInfoLayout = ({ name, sprites, isLoading, errors }) => {
                <SubTitle title={name} color={"orangered"} />
 
                <div className={styles.pokemonCard}>
-                  <img src={sprites?.other["official-artwork"].front_default} />
+                  <img src={sprites?.other?.["official-artwork"]?.front_default} alt="" />
+
+                  <div className={styles.statList}>
+                     {Object.entries(stats).map(([statName, statValue]) => {
+                        return (
+                           <StatsList key={statName} icon={STAT_ICON_LIST[statName]} statValue={statValue} />
+                        );
+                     })}
+                     <div className={styles.abilitiesWrapper}>
+                        <img src={ABILITIES_LIST_MAIN_ICON} alt="" />
+                        <div className={styles.abilitiesList}>
+                           {abilities.map((abilityName, index) => {
+                              return (
+                                 <AbilitiesList key={abilityName} abilityName={abilityName} icon={ABILITIES_ICON_LIST[index]} />
+                              );
+                           })}
+                        </div>
+                     </div>
+                  </div>
                </div>
             </>
          }

@@ -17,7 +17,6 @@ export const PokemonInfoContainer = () => {
    const isLoading = useSelector(isPokemonInfoLoadingSelector);
    const errors = useSelector(pokemonInfoErrorsSelector);
 
-
    useEffect(() => {
       dispatch(getPokemonInfoThunk(pokemonName))
    }, [dispatch, pokemonName]);

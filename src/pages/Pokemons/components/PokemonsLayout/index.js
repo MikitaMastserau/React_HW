@@ -24,7 +24,7 @@ export const PokemonsLayout = ({ pokemonsData, isLoading, errors, handlePokemons
                      <div key={id} className={styles.pokemonItem}>
                         <Link to={`${ROUTE_NAMES.POKEMONS}/${name}`} >
                            <div className={styles.pokemonLink}>
-                              <img src={pokemonIcon} />
+                              <img src={pokemonIcon} alt="" />
                               <p>{name}</p>
                            </div>
                         </Link>

@@ -8,6 +8,8 @@ export const Header = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Link className={styles.navLink} to={ROUTE_NAMES.HOME}>Home Page</Link>
+			<Link className={styles.navLink} to={ROUTE_NAMES.SIGN_UP}>Sign Up</Link>
+			<Link className={styles.navLink} to={ROUTE_NAMES.SIGN_IN}>Sign In</Link>
 			<Link className={styles.navLink} to={ROUTE_NAMES.USERS}>Users</Link>
 			<Link className={styles.navLink} to={ROUTE_NAMES.CLASS_COUNTER}>Class Counter</Link>
 			<Link className={styles.navLink} to={ROUTE_NAMES.FUNC_COUNTER}>Functional Counter </Link>

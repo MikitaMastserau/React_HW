@@ -1,5 +1,7 @@
 export const ROUTE_NAMES = {
 	HOME: "/React_HW/",
+	SIGN_UP: "/sign-up",
+	SIGN_IN: "/sign-in",
 	USERS: "/users",
 	CLASS_COUNTER: "/class-counter",
 	FUNC_COUNTER: "/functional-counter",

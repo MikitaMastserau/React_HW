@@ -5,15 +5,15 @@ const useFetching = (requestFunction, isLoadOnMount = false) => {
    const [errors, setErrors] = useState(null);
    const [isLoading, setLoading] = useState(false);
 
-   const handleDataLoad = useCallback(() => {
+   const handleDataLoad = useCallback((...args) => {
       (async () => {
          try {
             setLoading(true);
-            const response = await requestFunction();
+            const response = await requestFunction(...args);
 
             setData(response);
          } catch (error) {
-            setErrors(error.message);
+            setErrors(error.response.data);
          } finally {
             setLoading(false);
          };

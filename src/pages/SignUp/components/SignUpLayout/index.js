@@ -15,8 +15,8 @@ export const SignUpLayout = ({ data, isLoading, requestErrors, handleSubmit, han
             <>
                {data?.data ? (
                   <>
-                     <div>{data.data.message}</div>
-                     <Link to={ROUTE_NAMES.HOME}>Go on Home Page</Link>
+                     <div className={styles.success}>{data.data.message}</div>
+                     <Link to={ROUTE_NAMES.SIGN_IN}>Go to Login</Link>
                   </>
                ) : (
                   <>

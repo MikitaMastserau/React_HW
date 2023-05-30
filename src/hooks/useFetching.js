@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
-const useFetching = (requestFunction, isLoadOnMount = false) => {
+const useFetching = (requestFunction) => {
    const [data, setData] = useState(null);
    const [errors, setErrors] = useState(null);
    const [isLoading, setLoading] = useState(false);
@@ -18,13 +18,7 @@ const useFetching = (requestFunction, isLoadOnMount = false) => {
             setLoading(false);
          };
       })();
-   }, []);
-
-   useEffect(() => {
-      if (isLoadOnMount) {
-         handleDataLoad();
-      };
-   }, []);
+   }, [requestFunction]);
 
    return { data, errors, isLoading, handleDataLoad };
 };

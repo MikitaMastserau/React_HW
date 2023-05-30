@@ -1,17 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import reduxCountersListReducer from "pages/ReduxCountersList/reducers";
-import todoListReducer from "pages/TodoList/reducers";
-import pokemonsReducer from "pages/Pokemons/reducers";
-import pokemonInfoReducer from "pages/PokemonInfo/reducers";
-import signInReducer from "pages/SignIn/reducers";
+import { rootReducer } from "./rootReducer";
+
+const persistConfig = {
+   key: "root",
+   storage,
+   whitelist: ["auth"]
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-   reducer: {
-      auth: signInReducer,
-      reduxCountersList: reduxCountersListReducer,
-      todoList: todoListReducer,
-      pokemons: pokemonsReducer,
-      pokemonInfo: pokemonInfoReducer,
-   },
-})
+   reducer: persistedReducer,
+});
+
+export const persistor = persistStore(store);

@@ -1,3 +1,5 @@
+import { startCase } from "lodash";
+
 import { Title } from "components/Title";
 import { SubTitle } from "components/SubTitle";
 import { LoadingSpinner } from "components/LoadingSpinner";
@@ -9,14 +11,13 @@ import { ABILITIES_ICON_LIST, ABILITIES_LIST_MAIN_ICON, STAT_ICON_LIST } from "p
 import styles from "./styles.module.scss";
 
 export const PokemonInfoLayout = ({ name, stats, abilities, sprites, isLoading, errors }) => {
-
    return (
       <>
          <Title title="Pokemon Info" />
 
-         {isLoading ? <LoadingSpinner /> :
+         {isLoading ? <div className={styles.loading}><LoadingSpinner /></div> :
             <>
-               <SubTitle title={name} color={"orangered"} />
+               <SubTitle title={startCase(name)} color={"orangered"} />
 
                <div className={styles.pokemonCard}>
                   <img src={sprites?.other?.["official-artwork"]?.front_default} alt="" />
@@ -41,7 +42,6 @@ export const PokemonInfoLayout = ({ name, stats, abilities, sprites, isLoading, 
                </div>
             </>
          }
-
          {errors && <p className={styles.errors}>{errors}</p>}
       </>
    );

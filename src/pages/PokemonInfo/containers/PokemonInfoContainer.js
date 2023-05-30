@@ -18,8 +18,8 @@ export const PokemonInfoContainer = () => {
    const errors = useSelector(pokemonInfoErrorsSelector);
 
    useEffect(() => {
-      dispatch(getPokemonInfoThunk(pokemonName))
-   }, [dispatch, pokemonName]);
+      dispatch(getPokemonInfoThunk(pokemonName));
+   }, [pokemonName]);
 
    return (
       <>

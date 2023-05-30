@@ -1,7 +1,7 @@
-import Pagination from '@mui/material/Pagination';
+import MaterialPagination from '@mui/material/Pagination';
 
 export const Pagination = ({ page, handlePageChange }) => {
    return (
-      <Pagination count={10} color="darkorange" page={page} onChange={handlePageChange} />
+      <MaterialPagination count={40} color="standard" page={page} onChange={handlePageChange} />
    )
-}
+};

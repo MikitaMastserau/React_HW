@@ -1,31 +1,37 @@
 import { Link } from "react-router-dom";
+import { startCase } from "lodash";
 
 import { Title } from "components/Title";
 import { LoadingSpinner } from "components/LoadingSpinner";
+import { Pagination } from "components/Pagination";
 import { ROUTE_NAMES } from "routes/routeNames";
+import pokecoinIcon from "static/icons/pokecoinIcon.png";
 
 import styles from "./styles.module.scss";
 
-export const PokemonsLayout = ({ pokemonsData, isLoading, errors, handlePokemonsLoad }) => {
-
+export const PokemonsLayout = ({ pokemonsData, isLoading, errors, page, handlePageChange }) => {
    return (
-      <>
+      <div className={styles.container}>
          <Title title="Pokemons" />
 
-         <div className={styles.buttonWrapper}>
-            <button className={styles.loadButton} onClick={handlePokemonsLoad}>Load Pokemons</button>
-         </div>
+         {errors && <p className={styles.errors}>{errors}</p>}
 
-         {isLoading ? <LoadingSpinner /> :
+         {isLoading ? <div className={styles.loading}><LoadingSpinner /></div> :
 
             <div className={styles.wrapper}>
-               {pokemonsData?.map(({ name, id, image }) => {
+               {pokemonsData?.map(({ name, id, image, price }) => {
                   return (
                      <div key={id} className={styles.pokemonItem}>
                         <Link to={`${ROUTE_NAMES.POKEMONS}/${name}`} >
                            <div className={styles.pokemonLink}>
                               <img src={image} alt="" />
-                              <p>{name}</p>
+                              <div className={styles.pokemonText}>
+                                 <p>{startCase(name)}</p>
+                                 <div className={styles.price}>
+                                    <img src={pokecoinIcon} alt="" />
+                                    <p>{price}</p>
+                                 </div>
+                              </div>
                            </div>
                         </Link>
                      </div>
@@ -34,7 +40,9 @@ export const PokemonsLayout = ({ pokemonsData, isLoading, errors, handlePokemons
             </div>
          }
 
-         {errors && <p className={styles.errors}>{errors}</p>}
-      </>
+         <div className={styles.pagination}>
+            <Pagination page={page} handlePageChange={handlePageChange} />
+         </div>
+      </div>
    );
 };

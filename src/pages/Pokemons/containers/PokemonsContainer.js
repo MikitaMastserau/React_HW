@@ -1,17 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import { PokemonsLayout } from "../components/PokemonsLayout";
 import { getPokemonsThunk } from "../api";
 import { isPokemonsLoadingSelector, pokemonsDataSelector, pokemonsErrorsSelector } from "../selectors";
+import { usePagination, useScrollTop } from "hooks";
 
 export const PokemonsContainer = () => {
+   const [page, handlePageChange] = usePagination(1);
+
+   useScrollTop(page);
+
    const dispatch = useDispatch();
 
    const pokemonsData = useSelector(pokemonsDataSelector);
    const isLoading = useSelector(isPokemonsLoadingSelector);
    const errors = useSelector(pokemonsErrorsSelector);
 
-   const handlePokemonsLoad = () => dispatch(getPokemonsThunk());
+   useEffect(() => {
+      dispatch(getPokemonsThunk({ page, limit: 24 }));
+   }, [page]);
 
    return (
       <>
@@ -19,7 +27,8 @@ export const PokemonsContainer = () => {
             pokemonsData={pokemonsData}
             isLoading={isLoading}
             errors={errors}
-            handlePokemonsLoad={handlePokemonsLoad} />
+            page={page}
+            handlePageChange={handlePageChange} />
       </>
    );
 };

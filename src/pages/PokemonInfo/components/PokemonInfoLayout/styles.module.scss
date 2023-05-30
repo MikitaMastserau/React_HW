@@ -32,6 +32,12 @@
    row-gap: 5px;
 }
 
+.loading {
+   height: 420px;
+   display: flex;
+   justify-content: center;
+}
+
 .errors {
    display: flex;
    justify-content: center;

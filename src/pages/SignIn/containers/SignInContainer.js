@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 import { useForm } from "hooks";
 import { SignInLayout } from "../components/SignInLayout";
 import { signInThunk } from "../api";
-import { isSignInLoadingSelector, signInErrorsSelector } from "../selectors";
+import { isAuthenticatedSelector, isSignInLoadingSelector, signInErrorsSelector } from "../selectors";
+import { ROUTE_NAMES } from "routes/routeNames";
 
 export const SignInContainer = () => {
    const dispatch = useDispatch();
+
+   const isAuthenticated = useSelector(isAuthenticatedSelector);
+   const isLoading = useSelector(isSignInLoadingSelector);
+   const errors = useSelector(signInErrorsSelector);
 
    const { form, handleChange } = useForm({
       email: "",
@@ -16,7 +22,7 @@ export const SignInContainer = () => {
 
    const handleSubmit = (event) => {
       event.preventDefault();
-      dispatch(signInThunk(form))
+      dispatch(signInThunk(form));
    };
 
    const [checked, setChecked] = useState(false);
@@ -25,8 +31,9 @@ export const SignInContainer = () => {
       setChecked(event.target.checked);
    };
 
-   const isLoading = useSelector(isSignInLoadingSelector);
-   const errors = useSelector(signInErrorsSelector);
+   if (isAuthenticated) {
+      return <Navigate to={ROUTE_NAMES.HOME} />
+   };
 
    return (
       <SignInLayout

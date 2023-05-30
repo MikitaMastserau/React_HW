@@ -19,12 +19,12 @@ export const PokemonsLayout = ({ pokemonsData, isLoading, errors, handlePokemons
          {isLoading ? <LoadingSpinner /> :
 
             <div className={styles.wrapper}>
-               {pokemonsData?.map(({ name, id, pokemonIcon }) => {
+               {pokemonsData?.map(({ name, id, image }) => {
                   return (
                      <div key={id} className={styles.pokemonItem}>
                         <Link to={`${ROUTE_NAMES.POKEMONS}/${name}`} >
                            <div className={styles.pokemonLink}>
-                              <img src={pokemonIcon} alt="" />
+                              <img src={image} alt="" />
                               <p>{name}</p>
                            </div>
                         </Link>

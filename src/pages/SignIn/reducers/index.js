@@ -4,6 +4,7 @@ import { signInThunk } from "../api";
 
 const initialState = {
    profileData: {},
+   isAuthenticated: false,
    isLoading: false,
    errors: null,
 };
@@ -19,6 +20,7 @@ const authSlice = createSlice({
          })
          .addCase(signInThunk.fulfilled, (state, { payload }) => {
             state.isLoading = false;
+            state.isAuthenticated = true;
             state.profileData = payload;
          })
          .addCase(signInThunk.rejected, (state, { payload }) => {

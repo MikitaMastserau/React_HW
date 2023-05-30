@@ -1,14 +1,19 @@
 import { useFormik } from "formik";
 import omit from "lodash/omit";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 import { SignUpLayout } from "../components/SignUpLayout";
 import { SignUpValidationSchema } from "../validations";
 import { useFetching } from "hooks";
 import { signUpRequest } from "../api";
+import { isAuthenticatedSelector } from "pages/SignIn/selectors";
+import { ROUTE_NAMES } from "routes/routeNames";
 
 export const SignUpContainer = () => {
    const { data, errors: requestErrors, isLoading, handleDataLoad } = useFetching(signUpRequest);
 
+   const isAuthenticated = useSelector(isAuthenticatedSelector);
 
    const formik = useFormik({
       initialValues: {
@@ -28,6 +33,10 @@ export const SignUpContainer = () => {
    });
 
    const { handleSubmit, handleChange, handleBlur, values, touched, errors } = formik;
+
+   if (isAuthenticated) {
+      return <Navigate to={ROUTE_NAMES.HOME} />
+   };
 
    return (
       <SignUpLayout

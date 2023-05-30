@@ -8,7 +8,7 @@ export const SignInLayout = ({ form, handleChange, handleSubmit, checked, handle
       <div className={styles.container}>
          <Title title="Sign In" />
 
-         {isLoading ? <LoadingSpinner /> :
+         {isLoading ? <LoadingSpinner /> : (
             <>
                <form className={styles.wrapper} onSubmit={handleSubmit}>
                   <div className={styles.field}>
@@ -29,10 +29,10 @@ export const SignInLayout = ({ form, handleChange, handleSubmit, checked, handle
                   <button className={styles.submit} type="submit">Log In</button>
                </form>
 
-               {Array.isArray(errors) && errors.map((error) => <p className={styles.requestError}>{error}</p>)}
+               {Array.isArray(errors) && errors.map((error) => <p key={error} className={styles.requestError}>{error}</p>)}
                {typeof errors === "string" && <p className={styles.requestError}>{errors}</p>}
             </>
-         }
+         )}
       </div>
-   )
+   );
 };

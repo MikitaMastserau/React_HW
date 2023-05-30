@@ -21,9 +21,9 @@ const pokemonsSlice = createSlice({
             state.isLoading = false;
             state.data = payload;
          })
-         .addCase(getPokemonsThunk.rejected, (state, { error }) => {
+         .addCase(getPokemonsThunk.rejected, (state, { payload }) => {
             state.isLoading = false;
-            state.errors = error;
+            state.errors = payload;
          })
    },
 });

@@ -67,6 +67,16 @@
    }
 }
 
+.success {
+   font-size: 20px;
+   text-align: center;
+   padding: 10px 0;
+
+   &::first-letter {
+      text-transform: uppercase;
+   }
+}
+
 .requestError {
    font-size: 20px;
    text-align: center;
